@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="lo">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ແອັບຄິດໄລ່ເງີນເດືອນ</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Lao:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            box-sizing: border-box;
+            font-family: 'Noto Sans Lao', sans-serif;
+        }
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            position: relative;
+        }
+        .gradient-bg::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="white" opacity="0.1"/><circle cx="75" cy="75" r="1" fill="white" opacity="0.1"/><circle cx="50" cy="10" r="0.5" fill="white" opacity="0.15"/><circle cx="20" cy="80" r="0.5" fill="white" opacity="0.15"/><circle cx="90" cy="30" r="0.5" fill="white" opacity="0.15"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+            pointer-events: none;
+        }
+        .card-shadow {
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25), 0 0 0 1px rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+        }
+        .input-focus:focus {
+            transform: translateY(-2px);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 10px 25px -5px rgba(59, 130, 246, 0.3);
+        }
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        .hover-lift:hover {
+            transform: translateY(-4px);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .animate-fade-in {
+            animation: fadeIn 0.6s ease-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .result-card {
+            background: linear-gradient(145deg, #f8fafc, #e2e8f0);
+            border: 1px solid rgba(148, 163, 184, 0.2);
+            transition: all 0.3s ease;
+        }
+        .result-card:hover {
+            background: linear-gradient(145deg, #ffffff, #f1f5f9);
+            transform: translateX(4px);
+        }
+        .input-modern {
+            background: rgba(255, 255, 255, 0.9);
+            border: 2px solid transparent;
+            background-clip: padding-box;
+            transition: all 0.3s ease;
+        }
+        .input-modern:focus {
+            background: rgba(255, 255, 255, 1);
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        }
+    </style>
+</head>
+<body class="gradient-bg min-h-screen py-8 px-4">
+    <div class="max-w-4xl mx-auto">
+        <!-- Header -->
+        <div class="text-center mb-12 animate-fade-in">
+            <div class="inline-block p-4 bg-white/10 rounded-full mb-4 backdrop-blur-sm">
+                <div class="text-6xl">💰</div>
+            </div>
+            <h1 class="text-5xl font-bold text-white mb-4 tracking-tight">ແອັບຄິດໄລ່ເງີນເດືອນ</h1>
+            <p class="text-white/90 text-xl font-medium">ຄິດໄລ່ເງີນເດືອນຂອງທ່ານຢ່າງແມ່ນຍໍາແລະງ່າຍດາຍ</p>
+            <div class="mt-4 flex justify-center space-x-2">
+                <div class="w-2 h-2 bg-white/60 rounded-full"></div>
+                <div class="w-2 h-2 bg-white/80 rounded-full"></div>
+                <div class="w-2 h-2 bg-white rounded-full"></div>
+            </div>
+        </div>
+
+        <div class="grid lg:grid-cols-2 gap-8">
+            <!-- Input Section -->
+            <div class="glass-effect rounded-3xl p-8 card-shadow hover-lift">
+                <div class="flex items-center justify-between mb-8">
+                    <h2 class="text-3xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent flex items-center">
+                        📝 ຂໍ້ມູນພື້ນຖານ
+                    </h2>
+                    <div class="w-12 h-1 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full"></div>
+                </div>
+
+                <!-- Basic Salary -->
+                <div class="mb-8">
+                    <label class="block text-gray-800 font-bold mb-3 text-lg">1. ເງີນເດືອນພື້ນຖານ (ກີບ)</label>
+                    <div class="relative">
+                        <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                            <span class="text-gray-500 text-xl">💵</span>
+                        </div>
+                        <input type="number" id="basicSalary" class="w-full pl-12 pr-4 py-4 input-modern rounded-xl focus:outline-none input-focus text-lg font-medium" placeholder="ປ້ອນເງີນເດືອນພື້ນຖານ" value="0">
+                    </div>
+                </div>
+
+                <!-- Overtime Section -->
+                <div class="mb-8">
+                    <label class="block text-gray-800 font-bold mb-4 text-lg flex items-center">
+                        ⏰ 2. ຊົ່ວໂມງລ່ວງເວລາ (OT)
+                    </label>
+                    
+                    <div class="grid grid-cols-3 gap-4">
+                        <div class="bg-gradient-to-br from-green-50 to-emerald-50 p-5 rounded-xl border border-green-200 hover:shadow-lg transition-all duration-300">
+                            <label class="block text-sm font-semibold text-green-800 mb-3 flex items-center">
+                                <span class="w-3 h-3 bg-green-500 rounded-full mr-2"></span>
+                                OT 1.5x
+                            </label>
+                            <input type="number" id="ot15Hours" class="w-full px-3 py-3 input-modern rounded-lg focus:outline-none text-center font-medium" placeholder="0" value="0">
+                        </div>
+                        <div class="bg-gradient-to-br from-orange-50 to-amber-50 p-5 rounded-xl border border-orange-200 hover:shadow-lg transition-all duration-300">
+                            <label class="block text-sm font-semibold text-orange-800 mb-3 flex items-center">
+                                <span class="w-3 h-3 bg-orange-500 rounded-full mr-2"></span>
+                                OT 2.5x
+                            </label>
+                            <input type="number" id="ot25Hours" class="w-full px-3 py-3 input-modern rounded-lg focus:outline-none text-center font-medium" placeholder="0" value="0">
+                        </div>
+                        <div class="bg-gradient-to-br from-red-50 to-pink-50 p-5 rounded-xl border border-red-200 hover:shadow-lg transition-all duration-300">
+                            <label class="block text-sm font-semibold text-red-800 mb-3 flex items-center">
+                                <span class="w-3 h-3 bg-red-500 rounded-full mr-2"></span>
+                                OT 3x
+                            </label>
+                            <input type="number" id="ot3Hours" class="w-full px-3 py-3 input-modern rounded-lg focus:outline-none text-center font-medium" placeholder="0" value="0">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tax Rate -->
+                <div class="mb-8">
+                    <label class="block text-gray-800 font-bold mb-3 text-lg">3. ອັດຕາອາກອນ (%)</label>
+                    <div class="relative">
+                        <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                            <span class="text-gray-500 text-xl">📊</span>
+                        </div>
+                        <input type="number" id="taxRate" class="w-full pl-12 pr-4 py-4 input-modern rounded-xl focus:outline-none input-focus text-lg font-medium" placeholder="ປ້ອນອັດຕາອາກອນ" value="0" step="0.1">
+                        <div class="absolute inset-y-0 right-0 pr-4 flex items-center pointer-events-none">
+                            <span class="text-gray-500 font-medium">%</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Additional Income -->
+                <div class="mb-8">
+                    <label class="block text-gray-800 font-bold mb-3 text-lg">4. ລາຍຈ່າຍເພີ່ມຕື່ມ (ກີບ)</label>
+                    <div class="relative">
+                        <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                            <span class="text-gray-500 text-xl">💎</span>
+                        </div>
+                        <input type="number" id="additionalIncome" class="w-full pl-12 pr-4 py-4 input-modern rounded-xl focus:outline-none input-focus text-lg font-medium" placeholder="ເບ້ຍເລ້ຍ, ໂບນັດ, ອື່ນໆ" value="0">
+                    </div>
+                </div>
+
+                <!-- Social Security -->
+                <div class="mb-8">
+                    <label class="block text-gray-800 font-bold mb-3 text-lg flex items-center">
+                        🛡️ 5. ປະກັນສັງຄົມ
+                        <span class="ml-2 text-sm font-normal text-gray-600">(4.5% ຂອງເງີນເດືອນພື້ນຖານ)</span>
+                    </label>
+                    <div class="bg-gradient-to-br from-blue-50 to-indigo-50 p-6 rounded-xl border border-blue-200">
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center">
+                                <input type="checkbox" id="socialSecurityEnabled" class="w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 focus:ring-2 mr-3" checked>
+                                <label for="socialSecurityEnabled" class="text-blue-800 font-medium">ເປີດໃຊ້ການຫັກປະກັນສັງຄົມ</label>
+                            </div>
+                            <span id="socialSecurityAmount" class="text-blue-700 font-bold text-lg">0 ກີບ</span>
+                        </div>
+                        <p class="text-sm text-blue-600 mt-2">ຕາມກົດໝາຍລາວ: ພະນັກງານຈ່າຍ 4.5% ຂອງເງີນເດືອນພື້ນຖານ</p>
+                    </div>
+                </div>
+
+
+
+                <button onclick="calculateSalary()" class="w-full bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 text-white font-bold py-5 px-8 rounded-2xl hover:from-blue-600 hover:via-purple-600 hover:to-pink-600 transform hover:scale-105 hover:shadow-2xl transition-all duration-500 shadow-xl text-xl relative overflow-hidden group">
+                    <div class="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    <span class="relative flex items-center justify-center">
+                        🧮 ຄິດໄລ່ເງີນເດືອນ
+                        <svg class="w-6 h-6 ml-2 transform group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+                        </svg>
+                    </span>
+                </button>
+            </div>
+
+            <!-- Results Section -->
+            <div class="glass-effect rounded-3xl p-8 card-shadow hover-lift">
+                <div class="flex items-center justify-between mb-8">
+                    <h2 class="text-3xl font-bold bg-gradient-to-r from-green-600 to-blue-600 bg-clip-text text-transparent flex items-center">
+                        📊 ຜົນການຄິດໄລ່
+                    </h2>
+                    <div class="w-12 h-1 bg-gradient-to-r from-green-500 to-blue-500 rounded-full"></div>
+                </div>
+
+                <div class="space-y-4">
+                    <!-- OT Breakdown -->
+                    <div class="result-card p-6 rounded-2xl mb-6">
+                        <h3 class="font-bold text-gray-800 mb-4 flex items-center text-lg">
+                            ⏰ ລາຍລະອຽດ OT
+                        </h3>
+                        <div class="grid grid-cols-3 gap-4">
+                            <div class="flex flex-col items-center bg-green-50 p-4 rounded-xl border border-green-200 hover:shadow-md transition-all duration-300">
+                                <span class="text-green-700 font-medium flex items-center mb-2">
+                                    <span class="w-3 h-3 bg-green-500 rounded-full mr-2"></span>
+                                    OT 1.5x
+                                </span>
+                                <span id="ot15Amount" class="font-bold text-green-800 text-lg">0 ກີບ</span>
+                            </div>
+                            <div class="flex flex-col items-center bg-orange-50 p-4 rounded-xl border border-orange-200 hover:shadow-md transition-all duration-300">
+                                <span class="text-orange-700 font-medium flex items-center mb-2">
+                                    <span class="w-3 h-3 bg-orange-500 rounded-full mr-2"></span>
+                                    OT 2.5x
+                                </span>
+                                <span id="ot25Amount" class="font-bold text-orange-800 text-lg">0 ກີບ</span>
+                            </div>
+                            <div class="flex flex-col items-center bg-red-50 p-4 rounded-xl border border-red-200 hover:shadow-md transition-all duration-300">
+                                <span class="text-red-700 font-medium flex items-center mb-2">
+                                    <span class="w-3 h-3 bg-red-500 rounded-full mr-2"></span>
+                                    OT 3x
+                                </span>
+                                <span id="ot3Amount" class="font-bold text-red-800 text-lg">0 ກີບ</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Total Income -->
+                    <div class="result-card p-6 rounded-2xl mb-4 border-l-4 border-green-500">
+                        <div class="flex justify-between items-center">
+                            <span class="font-bold text-green-800 text-lg flex items-center">
+                                💰 6. ລາຍຮັບລວມ:
+                            </span>
+                            <span id="totalIncome" class="text-2xl font-bold text-green-600">0 ກີບ</span>
+                        </div>
+                    </div>
+
+                    <!-- Social Security Deduction -->
+                    <div class="result-card p-6 rounded-2xl mb-4 border-l-4 border-blue-500">
+                        <div class="flex justify-between items-center">
+                            <span class="font-bold text-blue-800 text-lg flex items-center">
+                                🛡️ 7. ປະກັນສັງຄົມ (4.5%):
+                            </span>
+                            <span id="socialSecurityDeduction" class="text-xl font-bold text-blue-600">0 ກີບ</span>
+                        </div>
+                    </div>
+
+                    <!-- Tax Amount -->
+                    <div class="result-card p-6 rounded-2xl mb-6 border-l-4 border-orange-500">
+                        <div class="flex justify-between items-center">
+                            <span class="font-bold text-orange-800 text-lg flex items-center">
+                                📊 8. ອາກອນທີ່ຕ້ອງຈ່າຍ:
+                            </span>
+                            <span id="taxAmount" class="text-xl font-bold text-orange-600">0 ກີບ</span>
+                        </div>
+                    </div>
+
+                    <!-- Net Salary -->
+                    <div class="bg-gradient-to-br from-purple-500 via-pink-500 to-blue-500 p-8 rounded-3xl shadow-2xl transform hover:scale-105 transition-all duration-300 relative overflow-hidden">
+                        <div class="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent"></div>
+                        <div class="relative flex justify-between items-center">
+                            <span class="text-2xl font-bold text-white flex items-center">
+                                🎯 9. ເງີນເດືອນສຸດທິ:
+                            </span>
+                            <span id="netSalary" class="text-4xl font-bold text-white drop-shadow-lg">0 ກີບ</span>
+                        </div>
+                        <div class="absolute -bottom-2 -right-2 w-20 h-20 bg-white/10 rounded-full"></div>
+                        <div class="absolute -top-2 -left-2 w-16 h-16 bg-white/10 rounded-full"></div>
+                    </div>
+
+                    <!-- Summary Card -->
+                    <div class="result-card p-6 rounded-2xl mt-8 bg-gradient-to-r from-gray-50 to-blue-50">
+                        <h3 class="font-bold text-gray-800 mb-4 flex items-center text-lg">
+                            📋 ສະຫຼຸບການຄິດໄລ່
+                        </h3>
+                        <div class="space-y-3">
+                            <div class="flex items-center text-gray-700 bg-white/70 p-3 rounded-lg">
+                                <div class="w-2 h-2 bg-blue-500 rounded-full mr-3"></div>
+                                <span class="font-medium">ເງີນເດືອນພື້ນຖານ + OT + ລາຍຮັບເພີ່ມ = ລາຍຮັບລວມ</span>
+                            </div>
+                            <div class="flex items-center text-gray-700 bg-white/70 p-3 rounded-lg">
+                                <div class="w-2 h-2 bg-purple-500 rounded-full mr-3"></div>
+                                <span class="font-medium">ລາຍຮັບລວມ - ປະກັນສັງຄົມ - ອາກອນ = ເງີນເດືອນສຸດທິ</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function formatNumber(num) {
+            return new Intl.NumberFormat('lo-LA').format(num);
+        }
+
+        function calculateSalary() {
+            // Get input values
+            const basicSalary = parseFloat(document.getElementById('basicSalary').value) || 0;
+            const ot15Hours = parseFloat(document.getElementById('ot15Hours').value) || 0;
+            const ot25Hours = parseFloat(document.getElementById('ot25Hours').value) || 0;
+            const ot3Hours = parseFloat(document.getElementById('ot3Hours').value) || 0;
+            const taxRate = parseFloat(document.getElementById('taxRate').value) || 0;
+            const additionalIncome = parseFloat(document.getElementById('additionalIncome').value) || 0;
+            const socialSecurityEnabled = document.getElementById('socialSecurityEnabled').checked;
+
+            // Calculate hourly rate (assuming 8 hours/day, 22 working days/month)
+            const hourlyRate = basicSalary / (8 * 22);
+
+            // Calculate OT amounts
+            const ot15Amount = ot15Hours * hourlyRate * 1.5;
+            const ot25Amount = ot25Hours * hourlyRate * 2.5;
+            const ot3Amount = ot3Hours * hourlyRate * 3;
+
+            // Calculate total OT
+            const totalOT = ot15Amount + ot25Amount + ot3Amount;
+
+            // Calculate total income
+            const totalIncome = basicSalary + totalOT + additionalIncome;
+
+            // Calculate social security (4.5% of basic salary only)
+            const socialSecurityAmount = socialSecurityEnabled ? (basicSalary * 4.5) / 100 : 0;
+
+            // Calculate tax (on total income minus social security)
+            const taxableIncome = totalIncome - socialSecurityAmount;
+            const taxAmount = (taxableIncome * taxRate) / 100;
+
+            // Calculate net salary
+            const netSalary = totalIncome - socialSecurityAmount - taxAmount;
+
+            // Update display
+            document.getElementById('ot15Amount').textContent = formatNumber(Math.round(ot15Amount)) + ' ກີບ';
+            document.getElementById('ot25Amount').textContent = formatNumber(Math.round(ot25Amount)) + ' ກີບ';
+            document.getElementById('ot3Amount').textContent = formatNumber(Math.round(ot3Amount)) + ' ກີບ';
+            document.getElementById('totalIncome').textContent = formatNumber(Math.round(totalIncome)) + ' ກີບ';
+            document.getElementById('socialSecurityAmount').textContent = formatNumber(Math.round(socialSecurityAmount)) + ' ກີບ';
+            document.getElementById('socialSecurityDeduction').textContent = formatNumber(Math.round(socialSecurityAmount)) + ' ກີບ';
+            document.getElementById('taxAmount').textContent = formatNumber(Math.round(taxAmount)) + ' ກີບ';
+            document.getElementById('netSalary').textContent = formatNumber(Math.round(netSalary)) + ' ກີບ';
+
+            // Add animation effect
+            document.querySelector('#netSalary').parentElement.style.transform = 'scale(1.05)';
+            setTimeout(() => {
+                document.querySelector('#netSalary').parentElement.style.transform = 'scale(1)';
+            }, 200);
+        }
+
+        // Auto-calculate when inputs change
+        document.addEventListener('DOMContentLoaded', function() {
+            const inputs = document.querySelectorAll('input');
+            inputs.forEach(input => {
+                input.addEventListener('input', calculateSalary);
+                input.addEventListener('change', calculateSalary);
+            });
+            
+            // Initial calculation
+            calculateSalary();
+        });
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'98920b5334c2500e',t:'MTc1OTU1MzI3OC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
